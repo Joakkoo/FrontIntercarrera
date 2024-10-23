@@ -1,10 +1,15 @@
-
+import logo from './logo.svg';
+import './App.css';
+import Tamagotchi from './components/Tamagotchi';
+import Estadisticas from './components/Estadisticas/mqtt';
 
 function App() {
   return (
-   <>
-   hola
-   </>
+    <div>
+      <Estadisticas></Estadisticas>
+      <Tamagotchi/>
+    </div>
+    
   );
 }
 

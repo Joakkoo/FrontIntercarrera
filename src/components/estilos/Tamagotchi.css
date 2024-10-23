@@ -1,0 +1,18 @@
+.tamagotchi-container {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .stats p {
+    font-size: 18px;
+  }
+  
+  .actions button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+  }
