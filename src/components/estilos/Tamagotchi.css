@@ -16,3 +16,19 @@
     padding: 10px;
     font-size: 16px;
   }
+
+  .gif-container {
+    width: 200px; /* Ajusta el tamaño del cuadrado según necesites */
+    height: 200px;
+    background-color: #f1f2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centra el cuadrado */
+  }
+  
+  .gif-container img {
+    width: 100%;  /* Ocupa el 100% del ancho del contenedor */
+    height: 100%; /* Ocupa el 100% de la altura del contenedor */
+    object-fit: contain; /* Asegura que la imagen mantenga su relación de aspecto */
+}
