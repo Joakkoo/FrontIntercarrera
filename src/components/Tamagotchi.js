@@ -149,13 +149,13 @@ const Tamagotchi = () => {
     setVentiladorEncendido(nuevoEstado);
 
     // Enviar el estado del ventilador al backend
-    fetch("http://localhost:8080/api/ventilador", {
+    fetch("http://localhost:4001/api/ventilador", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        estadoVentilador: nuevoEstado ? "encendido" : "apagado",
+        estadoVentilador: nuevoEstado ? 1 : 0,
       }),
     })
       .then((response) => response.json())
