@@ -84,7 +84,7 @@ const Tamagotchi = () => {
 
   useEffect(() => {
     let gifPath = ""; // Inicializamos una variable para la ruta del gif
-  
+
     // Si el Tamagotchi está muerto, forzamos la imagen de muerto
     if (isDead) {
       gifPath = "/images/muerto/monoMuerte.png";
@@ -117,11 +117,35 @@ const Tamagotchi = () => {
           break;
       }
     }
-  
+
     setGif(gifPath); // Actualizamos el estado del gif
   }, [mood, isDead]); // El useEffect se ejecutará cuando `mood` o `isDead` cambien
-  
+
   useEffect(() => {
+    // Función para enviar estadísticas al backend
+    const enviarEstadisticas = () => {
+      fetch("http://localhost:4001/api/mascota/estadisticas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          hunger,
+          happiness,
+          energy,
+          health,
+          sensores,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Estadísticas enviadas:", data);
+        })
+        .catch((error) => {
+          console.error("Error al enviar estadísticas:", error);
+        });
+    };
+  
     // Escuchar las actualizaciones del estado del Tamagotchi desde el servidor
     socket.on("stateUpdate", (newState) => {
       setHunger(newState.hunger);
@@ -131,18 +155,28 @@ const Tamagotchi = () => {
       setIsSleeping(newState.isSleeping);
       setIsDead(newState.isDead);
       setMood(newState.mood);
+  
+      // Enviar estadísticas después de actualizar el estado
+      enviarEstadisticas();
     });
-
+  
     // Escuchar las actualizaciones de los datos de sensores desde el servidor
     socket.on("sensorDataUpdate", (newSensores) => {
       setSensores(newSensores);
+  
+      // Enviar estadísticas después de actualizar los sensores
+      enviarEstadisticas();
     });
-
+  
+    // Limpiar los listeners de socket al desmontar el componente
     return () => {
       socket.off("stateUpdate");
       socket.off("sensorDataUpdate");
     };
-  }, []);
+  }, [hunger, happiness, energy, health, sensores]); // Dependencias para actualizar la función enviarEstadisticas si cambian los estados
+  
+
+
 
   const toggleVentilador = () => {
     const nuevoEstado = !ventiladorEncendido;
@@ -214,16 +248,16 @@ const Tamagotchi = () => {
           ventiladorEncendido={ventiladorEncendido}
           toggleVentilador={toggleVentilador}
         />
-         <div className="gif-container">
-              <div className="gif-container">
-                <img src={gif} alt="Tamagotchi mood" />
-              </div>
-            </div>
+        <div className="gif-container">
+          <div className="gif-container">
+            <img src={gif} alt="Tamagotchi mood" />
+          </div>
+        </div>
         {!isDead ? (
           <>
             <p>Estado de ánimo: {getMoodText(mood)}</p>
             {isSleeping && <p>El Tamagotchi está durmiendo...</p>}
-           
+
             <div className="sensores">
               <h2>Datos de Sensores:</h2>
               <p>
@@ -240,7 +274,7 @@ const Tamagotchi = () => {
           </>
         ) : (
           <p className="game-over">Game Over: El Tamagotchi ha muerto </p>
-    
+
         )}
       </>
     </div>

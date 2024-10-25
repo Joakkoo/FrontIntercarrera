@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import mqtt from 'mqtt';
 import DataChart from './Grafico';
 
 const SensorDashboard = () => {
   const [temperatura, setTemperatura] = useState([]);
   const [humedad, setHumedad] = useState([]);
-  const [luminosidad, setLuminosidad] = useState([]);
+  const [luz, setLuz] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +15,7 @@ const SensorDashboard = () => {
         if (data.temperatura && data.humedad && data.luminosidad) {
           setTemperatura((prev) => [...prev, data.temperatura].slice(-10));
           setHumedad((prev) => [...prev, data.humedad].slice(-10));
-          setLuminosidad((prev) => [...prev, data.luminosidad].slice(-10));
+          setLuz((prev) => [...prev, data.luz].slice(-10));
         }
       } catch (error) {
         console.error('Error fetching sensor data:', error);
@@ -33,7 +32,7 @@ const SensorDashboard = () => {
       <h2>Dashboard de Sensores</h2>
       <DataChart label="Temperatura" dataPoints={temperatura} color="red" />
       <DataChart label="Humedad" dataPoints={humedad} color="blue" />
-      <DataChart label="Luminosidad" dataPoints={luminosidad} color="yellow" />
+      <DataChart label="Luminosidad" dataPoints={luz} color="yellow" />
     </div>
   );
 };
