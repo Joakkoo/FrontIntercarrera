@@ -6,14 +6,10 @@ const Acciones = ({ onFeed, onPlay, onSleep, isSleeping, energy, isDead, onReviv
     <div className="actions">
       {!isDead ? (
         <Space direction="vertical" size="middle">
-          <Button type="primary" shape="round" onClick={onFeed} disabled={isSleeping}>
-            Alimentar
-          </Button>
-          <Button type="primary" shape="round" onClick={onPlay} disabled={isSleeping || energy <= 20}>
-            Jugar
-          </Button>
-          <Button type="primary" shape="round" onClick={onSleep} disabled={isSleeping}>
-            Dormir
+          <Button type="primary" shape="round" onClick={onFeed} disabled={isSleeping} style={{ backgroundColor: 'green' }}>🍌</Button>
+          <Button type="primary" shape="round" onClick={onPlay} disabled={isSleeping || energy <= 20} style={{ backgroundColor: 'green' }} >🎮
+          </Button> 
+          <Button type="primary" shape="round" onClick={onSleep} disabled={isSleeping} style={{ backgroundColor: 'green' }}>💤
           </Button>
           <Button type="default" shape="round" onClick={toggleVentilador}>
             {ventiladorEncendido ? 'Apagar Ventilador' : 'Encender Ventilador'}
