@@ -229,55 +229,48 @@ const Tamagotchi = () => {
 
   return (
     <div className="tamagotchi-container">
-      <h1>Tamagotchi</h1>
-      <>
+    <h1>Mario</h1>
+    <div className="tamagotchi-main">
+      {/* Ventana del Tamagotchi */}
+      <div className="tamagotchi-ventana">
+        <div className="gif-container">
+          <img src={gif} alt="Tamagotchi mood" />
+        </div>
+        <p>Estado de ánimo: {getMoodText(mood)}</p>
+        {isSleeping && <p>El Tamagotchi está durmiendo...</p>}
+        <div className="tamagotchi-acciones">
+      <Acciones
+        onFeed={feed}
+        onPlay={play}
+        onSleep={sleep}
+        isSleeping={isSleeping}
+        energy={energy}
+        isDead={isDead}
+        onRevive={revive}
+        ventiladorEncendido={ventiladorEncendido}
+        toggleVentilador={toggleVentilador}
+      />
+    </div>
+      </div>
+
+      {/* Estadísticas */}
+      <div className="tamagotchi-stats">
         <Estadisticas
           hunger={hunger}
           happiness={happiness}
           energy={energy}
           health={health}
         />
-        <Acciones
-          onFeed={feed}
-          onPlay={play}
-          onSleep={sleep}
-          isSleeping={isSleeping}
-          energy={energy}
-          isDead={isDead}
-          onRevive={revive}
-          ventiladorEncendido={ventiladorEncendido}
-          toggleVentilador={toggleVentilador}
-        />
-        <div className="gif-container">
-          <div className="gif-container">
-            <img src={gif} alt="Tamagotchi mood" />
-          </div>
+        <div className="sensores">
+          <h2>Datos de Sensores:</h2>
+          <p>Temperatura: {sensores.temperatura}°C - {getTempText(sensores.estadoTemp)}</p>
+          <p>Humedad: {sensores.humedad}% - {getHumText(sensores.estadoHum)}</p>
+          <p>Luz: {sensores.luz} lx - {getLuzText(sensores.estadoLuz)}</p>
         </div>
-        {!isDead ? (
-          <>
-            <p>Estado de ánimo: {getMoodText(mood)}</p>
-            {isSleeping && <p>El Tamagotchi está durmiendo...</p>}
-
-            <div className="sensores">
-              <h2>Datos de Sensores:</h2>
-              <p>
-                Temperatura: {sensores.temperatura}°C -{" "}
-                {getTempText(sensores.estadoTemp)}
-              </p>
-              <p>
-                Humedad: {sensores.humedad}% - {getHumText(sensores.estadoHum)}
-              </p>
-              <p>
-                Luz: {sensores.luz} lx - {getLuzText(sensores.estadoLuz)}
-              </p>
-            </div>
-          </>
-        ) : (
-          <p className="game-over">Game Over: El Tamagotchi ha muerto </p>
-
-        )}
-      </>
+      </div>
     </div>
+
+  </div>
   );
 };
 
