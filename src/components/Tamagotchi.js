@@ -27,9 +27,10 @@ const Tamagotchi = () => {
 
   // Funciones para convertir el valor numérico de los sensores en texto
   const getMoodText = (moodValue) => {
+    if (isDead){
+      return "Muerto";
+    }
     switch (moodValue) {
-      case 0:
-        return "Muerto";
       case 1:
         return "Triste";
       case 2:
@@ -42,6 +43,14 @@ const Tamagotchi = () => {
         return "Cansado";
       case 6:
         return "Hambriento";
+      case 7:
+        return "Durmiendo";
+      case 8:
+        return "Con Frío";
+      case 9:
+        return "Con Calor";
+      case 10:
+        return "Desconocido"
       default:
         return "Desconocido";
     }
@@ -89,31 +98,42 @@ const Tamagotchi = () => {
     if (isDead) {
       gifPath = "/images/muerto/monoMuerte.png";
     } else {
-      // Si no está muerto, actualizamos el gif según el estado de ánimo (mood)
       switch (mood) {
         case 0:
           gifPath = "/images/muerto/monoMuerte.png";
           break;
         case 1:
-          gifPath = "/images/triste/ezgif-3-e96dce553d.gif";
+          gifPath = "/images/triste/monoTriste.gif";
           break;
         case 2:
-          gifPath = "/images/enojado/ezgif-3-69f7ba81fd.gif";
+          gifPath = "/images/enojado/monoEnojado.gif";
           break;
         case 3:
-          gifPath = "/images/neutral/ezgif-3-2b41c819c0.gif";
+          gifPath = "/images/neutral/monoNeutral.gif";
           break;
         case 4:
-          gifPath = "/images/feliz/ezgif-2-5c56ce61fb.gif";
+          gifPath = "/images/feliz/monoFeliz.gif";
           break;
         case 5:
-          gifPath = "/images/cansado/ezgif-3-982fb85154.gif";
+          gifPath = "/images/cansado/monoCansado.gif";
           break;
         case 6:
-          gifPath = "/images/hambre/ezgif-3-06d5e2b833.gif";
+          gifPath = "/images/hambre/monoHambre.gif";
+          break;
+        case 7:
+          gifPath = "/images/dormir/monoDurmiendo.gif";
+          break;
+        case 8:
+          gifPath = "/images/frio - asustado/monoTiembla.gif";
+          break
+        case 9:
+          gifPath = "/images/calor - sediento/monoJadea.gif";
+          break;
+        case 10:
+          gifPath = "/images/oscuro/monoOscuro.gif";
           break;
         default:
-          gifPath = "/images/neutral/ezgif-3-2b41c819c0.gif"; // Ruta por defecto
+          gifPath = "/images/neutral/monoNeutral.gif"; // Ruta por defecto
           break;
       }
     }
@@ -174,9 +194,6 @@ const Tamagotchi = () => {
       socket.off("sensorDataUpdate");
     };
   }, [hunger, happiness, energy, health, sensores]); // Dependencias para actualizar la función enviarEstadisticas si cambian los estados
-  
-
-
 
   const toggleVentilador = () => {
     const nuevoEstado = !ventiladorEncendido;
@@ -215,15 +232,19 @@ const Tamagotchi = () => {
 
   const revive = () => {
     if (isDead) {
-      socket.emit("revive", (response) => {
-        if (response.success) {
-          setHunger(100);
-          setHappiness(100);
-          setEnergy(100);
-          setHealth(100);
-          setIsDead(false);
-        }
-      });
+      setGif("images/revivir/monoRevivir.gif");
+      
+      setTimeout(() => {
+        socket.emit("revive", (response) => {
+          if (response.success) {
+            setHunger(100);
+            setHappiness(100);
+            setEnergy(100);
+            setHealth(100);
+            setIsDead(false);
+          }
+        });
+      }, 3000); // 3000 milisegundos = 3 segundos
     }
   };
 
@@ -252,7 +273,6 @@ const Tamagotchi = () => {
       />
     </div>
       </div>
-
       {/* Estadísticas */}
       <div className="tamagotchi-stats">
         <Estadisticas
