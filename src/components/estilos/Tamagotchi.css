@@ -7,6 +7,11 @@
   margin: 0 auto;
 }
 
+.tamagotchi-container h1{
+  font-size: 30px; /* Ajusta este valor para que coincida con el de Mascota */
+  color: #001529; /* Color similar al del header para que se vea uniforme */
+}
+
 /* Estructura del layout principal */
 .tamagotchi-main {
   display: flex;

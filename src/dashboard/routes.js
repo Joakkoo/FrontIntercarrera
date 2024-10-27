@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "../Layout/Layout";
 import Tamagotchi from "../components/Tamagotchi";
 import Estadisticas from "../components/Estadísticas";
+import Grafico from "../components/Estadisticas/Grafico";
 
 const rutasAutenticadas = [
     {
@@ -14,6 +15,11 @@ const rutasAutenticadas = [
     {
         url: '/estadisticas',
         component: <Estadisticas  />
+    },
+
+    {
+        url: '/grafico',
+        component: <Grafico />
     },
 
 ];

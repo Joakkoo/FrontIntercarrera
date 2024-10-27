@@ -24,8 +24,8 @@ export default function Layout() {
             {isLogin && <Header2 />}
             <div className="content" style={{
                 flex: 1,
-                marginTop: '64px',
-                padding: "20px",
+                marginTop: '30px',
+                padding: "0px",
                 overflowY: "auto",
             }}>
                 <Outlet />

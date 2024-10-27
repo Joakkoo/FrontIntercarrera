@@ -1,0 +1,26 @@
+/* Grafico.css */
+.grafico-container {
+    max-width: 800px; /* Ancho máximo de la sección */
+    margin: 0 auto; /* Centrar la sección */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .grafico-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .grafico {
+    margin-bottom: 30px; /* Espacio entre los gráficos */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo para diferenciar cada gráfico */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle relieve */
+  }
+  
+  .grafico h3 {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
