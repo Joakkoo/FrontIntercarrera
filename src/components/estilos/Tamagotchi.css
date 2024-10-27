@@ -1,7 +1,6 @@
 /* Contenedor principal */
 .tamagotchi-container {
   text-align: center;
-  background-color: #f1f2f3;
   padding: 20px;
   border-radius: 10px;
   width: 600px; /* Ancho ajustado */
@@ -31,7 +30,6 @@
 .gif-container {
   width: 200px;
   height: 200px;
-  background-color: #f1f2f3;
   display: flex;
   justify-content: center;
   align-items: center;

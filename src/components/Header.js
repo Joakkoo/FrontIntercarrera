@@ -19,8 +19,8 @@ export default function Header2() {
                 <Button type="text" style={{ color: "white", marginLeft:"10px"}} onClick={() => navigate("/")}>
                     Ir a Inicio
                 </Button>
-                <div style={{ flex: 5, textAlign: "center", fontSize: "24px" }}>
-                Mi Perfil
+                <div style={{ flex: 5, textAlign: "center", fontSize: "24px", color: "#fff5c4" }}>
+                Mascota
              </div>
 
                 <div style={{ flex: 1, textAlign: "right", fontSize: "24px" }}>

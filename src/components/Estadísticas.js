@@ -30,7 +30,7 @@ const Estadisticas = ({ hunger, happiness, energy, health }) => {
               }}
             ></div>
           </div>
-          <span className="label">{stat.label}</span>
+          <span className="label"></span>
         </div>
       ))}
     </div>

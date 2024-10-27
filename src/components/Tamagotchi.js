@@ -258,7 +258,7 @@ const Tamagotchi = () => {
           <img src={gif} alt="Tamagotchi mood" />
         </div>
         <p>Estado de ánimo: {getMoodText(mood)}</p>
-        {isSleeping && <p>El Tamagotchi está durmiendo...</p>}
+        {isSleeping && <p>El mono mario está durmiendo...</p>}
         <div className="tamagotchi-acciones">
       <Acciones
         onFeed={feed}
