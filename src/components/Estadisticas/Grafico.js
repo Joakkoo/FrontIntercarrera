@@ -22,7 +22,7 @@ const Grafico = () => {
   }, []);
 
   // Preparar los datos de cada gráfico con muestreo de datos
-  const sampleRate = 10; // Por ejemplo, muestreo cada 5 puntos para mayor claridad
+  const sampleRate = 12; // Por ejemplo, muestreo cada 5 puntos para mayor claridad
   const fechas = historicalData.map(data => new Date(data.fecha).toLocaleDateString());
   const temperaturas = historicalData.map(data => data.temperatura);
   const humedades = historicalData.map(data => data.humedad);
@@ -38,7 +38,7 @@ const Grafico = () => {
     scales: {
       x: {
         ticks: {
-          maxTicksLimit: 10 // Limita el número de etiquetas en el eje X
+          maxTicksLimit: 12 // Limita el número de etiquetas en el eje X
         }
       },
       y: {
