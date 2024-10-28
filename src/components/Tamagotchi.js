@@ -155,6 +155,7 @@ const Tamagotchi = () => {
           energy,
           health,
           sensores,
+          estadoAnimo: getMoodText(mood),
         }),
       })
         .then((response) => response.json())
@@ -193,7 +194,7 @@ const Tamagotchi = () => {
       socket.off("stateUpdate");
       socket.off("sensorDataUpdate");
     };
-  }, [hunger, happiness, energy, health, sensores]); // Dependencias para actualizar la función enviarEstadisticas si cambian los estados
+  }, [hunger, happiness, energy, health, sensores, mood]); // Dependencias para actualizar la función enviarEstadisticas si cambian los estados
 
   const toggleVentilador = () => {
     const nuevoEstado = !ventiladorEncendido;

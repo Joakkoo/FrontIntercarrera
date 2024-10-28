@@ -16,7 +16,7 @@ const Acciones = ({ onFeed, onPlay, onSleep, isSleeping, energy, isDead, onReviv
           </Button>
         </Space>
       ) : (
-        <Button type="danger" shape="round" onClick={onRevive}>
+        <Button type="danger" shape="round" onClick={onRevive} style={{ backgroundColor: 'green', color: 'white' }}>
           Revivir
         </Button>
       )}
