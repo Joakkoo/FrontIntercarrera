@@ -26,7 +26,7 @@ export default function Header2() {
           >
             {isOnGraficoPage ? "Volver" : "Gráfico"}
           </Button>
-          <div style={{ flex: 12, textAlign: "center", fontSize: "24px", color: "#fff5c4" }}>
+          <div style={{ flex: 12, textAlign: "center", fontSize: "24px", color: "#f5e7a2" }}>
             Mascota
           </div>
           <div style={{ flex: 1, textAlign: "right", fontSize: "24px" }}>
