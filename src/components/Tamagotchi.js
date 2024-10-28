@@ -155,7 +155,7 @@ const Tamagotchi = () => {
           energy,
           health,
           sensores,
-          estadoAnimo: getMoodText(mood),
+          estadoAnimo: mood,
         }),
       })
         .then((response) => response.json())
